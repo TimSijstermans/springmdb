@@ -1,15 +1,49 @@
+<html>
 <head>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <title>Spring Movie Database with Angularjs</title>
+
+    <!-- Angular stuff -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- Materialize stuff -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+    <!-- FontAwesome stuff -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
 </head>
-<script>
-	$(function(){
-	    $.getJSON('api/helloworld', function(data) {
-	        console.log(data);
-	        alert('Your Json result is:  ' + data);
-			result.innerText = JSON.stringify(data)
-	    });
-	});
-</script>
+<body ng-app="mdbApp">
 
-<div id="result" style="color: red"></div>
+<div class="index-wrapper">
 
+    <!-- Navigation bar-->
+    <nav class="brown lighten-5" role="navigation">
+        <div class="nav-wrapper container">
+            <ul id="nav-bar" class="center">
+                <li><a class="grey-text text-darken-3" href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li><a class="grey-text text-darken-3" href="#/screenplays"><i class="fa fa-film"></i> Screenplays</a></li>
+                <li><a class="grey-text text-darken-3" href="#/persons"><i class="fa fa-user"></i> Persons</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!---->
+
+    <main id="content">
+        <div class="container" ng-view>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
+
+
+
+<div class="main" ng-controller="MainController">
+    <div class="container">
+        <div ng-repeat="screenplay in allScreenplays" class="row">
+
+        </div>
+    </div>
+</div>
