@@ -1,0 +1,15 @@
+<head>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+<script>
+	$(function(){
+	    $.getJSON('api/helloworld', function(data) {
+	        console.log(data);
+	        alert('Your Json result is:  ' + data);
+			result.innerText = JSON.stringify(data)
+	    });
+	});
+</script>
+
+<div id="result" style="color: red"></div>
+
