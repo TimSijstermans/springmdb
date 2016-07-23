@@ -1,0 +1,18 @@
+<div class="row" ng-repeat="screenplay in screenplays">
+	<div class="col s12 m6">
+		<div class="card brown lighten-1 hoverable">
+			<div class="card-content white-text">
+				<span class="card-title">{{screenplay.name}}</span>
+				<p> Directed by: {{screenplay.director.name}} {{screenplay.director.lastname}}</p>
+				<p>Rating: {{screenplay.rating}}</p>
+				<p>	
+					Description:</br> 
+					{{screenplay.description}}
+				</p>
+			</div>
+			<div class="card-action">
+				<a href="#">Meer informatie</a>
+			</div>
+		</div>
+	</div>
+</div>
