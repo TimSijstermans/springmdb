@@ -1,7 +1,7 @@
 /**
  * Created by tim on 24-7-16.
  */
-app.controller('NewScreenplayController', function($scope, Series, Movie) {
+app.controller('NewScreenplayController', function($scope, Series, Movie, Director) {
     Director.query(function(data) {
         $scope.directors = data;
     });
