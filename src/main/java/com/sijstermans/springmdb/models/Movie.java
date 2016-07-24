@@ -36,4 +36,12 @@ public class Movie extends Screenplay {
 	public void setLength(Time length) {
 		this.length = length;
 	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 }

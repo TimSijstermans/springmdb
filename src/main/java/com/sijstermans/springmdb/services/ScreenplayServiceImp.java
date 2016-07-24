@@ -83,4 +83,14 @@ public class ScreenplayServiceImp implements ScreenplayService {
 		
 		return null;
 	}
+
+	@Override
+	public int addMovie(Movie m) {
+		return movieDao.addMovie(m);
+	}
+
+	@Override
+	public int addSeries(Series s) {
+		return seriesDao.addSeries(s);
+	}
 }

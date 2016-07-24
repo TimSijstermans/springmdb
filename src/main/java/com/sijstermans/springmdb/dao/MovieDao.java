@@ -8,4 +8,6 @@ public interface MovieDao {
 	List<Movie> findAll();
 	
 	Movie findById(int id);
+
+	int addMovie(Movie m);
 }

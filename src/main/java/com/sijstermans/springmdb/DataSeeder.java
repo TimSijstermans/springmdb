@@ -46,13 +46,13 @@ public class DataSeeder {
 		mC.addActor(aB);
 		mC.addActor(aD);
 		Movie mD = new Movie("Missie Onmogelijk", 5, "Spannende film waarin Ethan Jaag (Tom Reis) een gevaarlijk plan uit moet schakelen",  dC, Time.valueOf("02:30:00"));
-		mC.addActor(aB);
-		mC.addActor(aD);
-		mC.addActor(aF);
+		mD.addActor(aB);
+		mD.addActor(aD);
+		mD.addActor(aF);
 		
 		Series sA = new Series("Walking Dooien", dB, "Een adembenemende serie over het reilen en zeilen van Rick Ross en zijn crew");
 		sA.setRating(4);
-		mA.addActor(aA);
+		sA.addActor(aA);
 		sA.addActor(aC);
 		sA.addActor(aE);
 		
@@ -96,7 +96,7 @@ public class DataSeeder {
 
 		session.getTransaction().commit();
 		session.close();
-	}
+	}   
 	
 	private long makeDate(String s){
 		SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");

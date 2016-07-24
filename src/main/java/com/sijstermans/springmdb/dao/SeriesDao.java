@@ -8,4 +8,6 @@ public interface SeriesDao {
 	List<Series> findAll();
 
 	Series findById(int id);
+
+	int addSeries(Series s);
 }

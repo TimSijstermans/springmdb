@@ -6,4 +6,6 @@ import com.sijstermans.springmdb.models.Director;
 
 public interface DirectorDao {
 	List<Director> findAll();
+	
+	Director findById(int id);
 }

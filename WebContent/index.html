@@ -4,19 +4,20 @@
 
     <!-- Materialize css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body ng-app="mdbApp">
 
 <div class="index-wrapper container z-depth-1">
 	<ul id="screenplayDropdown" class="dropdown-content">
-	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/screenplays/movies">Movies</a></li>
+	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/screenplays/movies">Films</a></li>
 	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/screenplays/series">Series</a></li>
 	</ul>
 	
 	<ul id="personDropdown" class="dropdown-content">
-	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/persons/actors">Actors</a></li>
-	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/persons/directors">Directors</a></li>
+	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/persons/actors">Acteurs</a></li>
+	  <li class="brown lighten-5"><a class="grey-text text-darken-3" href="#/persons/directors">Regisseuren</a></li>
 	</ul>
 	
     <!-- Navigation bar-->
@@ -24,8 +25,8 @@
         <div class="nav-wrapper">
             <ul id="nav-bar" class="left">
                 <li><a class="grey-text text-darken-3" href="#/"><i class="fa fa-home"></i> Home</a></li>
-                <li><a class="dropdown-button grey-text text-darken-3" href="#/screenplays" data-activates="screenplayDropdown" data-beloworigin="true" data-hover=true><i class="fa fa-film"></i> Screenplays<i class="material-icons right"></i></a></li>
-                <li><a class="dropdown-button grey-text text-darken-3" href="#/persons" data-activates="personDropdown" data-beloworigin="true" data-hover=true><i class="fa fa-users"></i> Persons<i class="material-icons right"></i></a></li>
+                <li><a class="dropdown-button grey-text text-darken-3" href="#/screenplays" data-activates="screenplayDropdown" data-beloworigin="true" data-hover=true><i class="fa fa-film"></i> Media<i class="material-icons right"></i></a></li>
+                <li><a class="dropdown-button grey-text text-darken-3" href="#/persons" data-activates="personDropdown" data-beloworigin="true" data-hover=true><i class="fa fa-users"></i> Personen<i class="material-icons right"></i></a></li>
             </ul>
         </div>
     </nav>
@@ -35,20 +36,17 @@
 	</div>
 </div>
 
-</body>
-</html>
-
-<!-- Angular stuff -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
-
 <!-- Materialize js / jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+<!-- Angular stuff -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+
 <!-- FontAwesome stuff -->
 <script src="https://use.fontawesome.com/95af9f80a9.js"></script>
-
 
 <!-- App -->
 <script src="js/app.js"></script>
@@ -56,5 +54,14 @@
 <script src="js/controllers/MainController.js"></script>
 <script src="js/controllers/PersonController.js"></script>
 <script src="js/controllers/ScreenplayController.js"></script>
+<script src="js/controllers/NewScreenplayController.js"></script>
+<script src="js/controllers/MovieDetailController.js"></script>
+<script src="js/controllers/SeriesDetailController.js"></script>
+<script src="js/services/ScreenplayService.js"></script>
+<script src="js/services/PersonService.js"></script>
+
+
+</body>
+</html>
 
 

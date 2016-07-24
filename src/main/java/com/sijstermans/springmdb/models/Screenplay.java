@@ -48,7 +48,6 @@ public abstract class Screenplay {
 		
 	}
 	public Screenplay(String name, int rating, String description, Director director) {
-		this.screenplayId = screenplayId;
 		this.name = name;
 		this.rating = rating;
 		this.description = description;

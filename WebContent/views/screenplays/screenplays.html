@@ -1,0 +1,24 @@
+<p>Op deze pagina staat alle media uit de database</p>
+
+<a class="waves-effect waves-light brown lighten-5 btn grey-text text-darken-3" href="#/screenplays/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Nieuw</a>
+
+<div class="row" ng-repeat="screenplay in screenplays">
+	<div class="col s12 m6">
+		<div class="card brown lighten-1 hoverable">
+			<div class="card-content white-text">
+				<span class="card-title">{{screenplay.name}}</span>
+                <p>Geregisseerd door: {{screenplay.director.name}} {{screenplay.director.lastname}}</p>
+                <p>Rating: {{screenplay.rating}}</p>
+                <p>Type media: {{screenplay.type}}</p>
+                <p>
+                    Omschrijving:</br>
+                    {{screenplay.description}}
+                </p>
+			</div>
+			<div class="card-action">
+				<a ng-show="screenplay.type == 'Series'" href="#/screenplays/series/{{screenplay.screenplayId}}">Meer informatie</a>
+				<a ng-show="screenplay.type == 'Movie'" href="#/screenplays/movies/{{screenplay.screenplayId}}">Meer informatie</a>
+			</div>
+		</div>
+	</div>
+</div>

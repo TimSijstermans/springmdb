@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col s10 push-s1"></div>
+	<div class="card">
+		<div class="col s5">    
+	        <div class="card-content grey-text text-darken-3">
+	            <span class="card-title">{{series.name}}</span>
+	            
+	            <p><b>Rating: </b>{{series.rating}}</p>
+	            <p><b>Type media: </b>{{series.type}}</p>
+	            <p>
+	                <b>Omschrijving:</b></br>
+	                {{series.description}}
+	            </p>
+	            <p><b>Geregisseerd door:</b></p>
+		        <div class="card-panel brown lighten-1 hoverable">
+					<span class="white-text">
+						 {{series.director.name}} {{series.director.lastname}} </br>
+	          				<b>Geboortedatum:</b> {{series.director.birthdate}}
+					</span>
+		        </div>
+	            <p><b>Acteurs:</b></p>
+	            <span ng-repeat="actor in series.actors">
+			        <div class="card-panel brown lighten-1 hoverable">
+						<span class="white-text">
+							{{actor.name}} {{actor.lastname}} </br>
+	           				<b>Geboortedatum:</b> {{actor.birthdate}}
+						</span>
+			        </div>
+	            </span>
+	        </div>
+	    </div>
+		<div class="col s5">
+	        <div class="card-content grey-text text-darken-3">
+	            <span class="card-title">Afleveringen: </span>
+				<span ng-repeat="episode in series.episodes">
+					<div class="card-panel brown lighten-1 white-text hoverable">
+						<span class="card-title">{{episode.name}}</span>
+						<p><b>Omschrijving:</b> </p>
+						<p> {{episode.description}} </p>
+					</div>
+				</span>
+	        </div>
+		</div>
+	</div>
+</div>

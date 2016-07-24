@@ -1,3 +1,5 @@
-app.controller('PersonController', function($scope) {
-    $scope.message = 'Check this person out!';
+app.controller('PersonController', function($scope, Person) {
+    Person.query(function(data) {
+        $scope.persons = data;
+    });
 })

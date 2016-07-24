@@ -49,4 +49,12 @@ public class Series extends Screenplay {
 	public void setEpisodes(List<Episode> episodes) {
 		this.episodes = episodes;
 	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 }

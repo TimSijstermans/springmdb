@@ -25,4 +25,11 @@ public class SeriesDaoImp extends AbstractDao implements SeriesDao {
 		return s.get(Series.class, id);
 	}
 
+	@Override
+	public int addSeries(Series s) {
+		Session session = getSession();
+		session.save(s);
+		return s.getScreenplayId();
+	}
+
 }

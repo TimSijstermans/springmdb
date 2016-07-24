@@ -1,0 +1,50 @@
+<form name="newScreenplayForm">
+
+	<div>
+		<label for="title">Titel</label>
+		<input type="text" ng-model="screenplay.name" class="form-control" id="title" placeholder="Titel" required />
+	</div>
+	<div>
+		<label>Type</label>
+		<div>
+			<select class="browser-default" ng-model="screenplay.type" id="type" required >
+		    	<option value="Movie" selected="selected">Film</option>
+		    	<option value="Series">Serie</option>
+		    </select>
+	    </div>
+	</div>
+	<div>
+		<label>Regisseur</label>
+		<div>
+			<select class="browser-default" ng-model="screenplay.director" id="director" required >
+		    	<option ng-repeat="director in directors" value="{{director}}">{{director.name}} {{director.lastname}}</option>
+		    </select>
+	    </div>
+	</div>
+	<div ng-show="screenplay.type == 'Movie'">
+		<label>Speelduur</label>
+		<input type="text" ng-model="screenplay.length" class="form-control" id="length" placeholder="speelduur volgens hh:mm:ss (01:23:00 voor 1 uur 23 minuten)"/>
+	</div>
+	<div>
+		<label>Rating</label>
+		<div>
+			<select class="browser-default" ng-model="screenplay.rating" id="rating" required >
+		    	<option value="1">1</option>
+		    	<option value="2">2</option>
+		    	<option value="3">3</option>
+		    	<option value="4">4</option>
+		    	<option value="5">5</option>
+		    </select>
+	    </div>
+	</div>
+	<div>
+		<label for=""description">Omschrijving</label>
+		<input type="text" ng-model="screenplay.description" class="form-control" id="description" placeholder="Omschrijving" required />
+	</div>
+	<div>
+		<input type="submit" class="btn btn-primary" value="Save" ng-click="submitScreenplay()"/>
+	</div>
+</form>
+
+<p>{{screenplay}}</p>
+

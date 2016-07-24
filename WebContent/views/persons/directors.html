@@ -1,0 +1,19 @@
+<p>Op deze pagina staan alle personen uit de database</p>
+
+<a class="waves-effect waves-light brown lighten-5 btn grey-text text-darken-3" href="#/persons/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Nieuw</a>
+
+
+<div class="row" ng-repeat="person in persons" ng-if="person.job == 'Director'">
+    <div class="col s12 m6">
+        <div class="card brown lighten-1 hoverable">
+            <div class="card-content white-text">
+                <span class="card-title">{{person.name}} {{person.lastname}}</span>
+       			<p><b>Geboortedatum:</b> {{person.birthdate}}</p>
+       			<p><b>Beroep:</b> {{person.job}}</p>
+            </div>
+            <div class="card-action">
+				<a href="#/persons/directors/{{person.person_id}}">Meer informatie</a>
+			</div>
+        </div>
+    </div>
+</div>

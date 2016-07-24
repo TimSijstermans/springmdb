@@ -23,4 +23,12 @@ public class MovieDaoImp extends AbstractDao implements MovieDao {
 		Session s = getSession();
 		return s.get(Movie.class, id);
 	}
+	
+	@Override
+	public int addMovie(Movie m) {
+		Session s = getSession();
+		s.save(m);
+		
+		return m.getScreenplayId();
+	}
 }

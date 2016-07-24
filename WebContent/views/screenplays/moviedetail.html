@@ -1,0 +1,32 @@
+<div class="row">
+   	<div class="card">
+   		<div class="col s10 ">
+	        <div class="card-content grey-text text-darken-3">
+	            <span class="card-title">{{movie.name}}</span>
+	            
+	            <p>Rating: {{movie.rating}}</p>
+	            <p>Type media: {{movie.type}}</p>
+	            <p>
+	                Omschrijving:</br>
+	                {{movie.description}}
+	            </p>
+	            <p>Geregisseerd door:</p>
+			        <div class="card-panel brown lighten-1 hoverable">
+						<span class="white-text">
+							 {{movie.director.name}} {{movie.director.lastname}} </br>
+	           				Geboortedatum: {{movie.director.birthdate}}	
+						</span>
+			        </div>
+	            <p> Acteurs: </p>
+	            <span ng-repeat="actor in movie.actors">
+				        <div class="card-panel brown lighten-1 hoverable">
+							<span class="white-text">
+								{{actor.name}} {{actor.lastname}} </br>
+		           				Geboortedatum: {{actor.birthdate}}	
+							</span>
+				        </div>
+	            </span>
+	        </div>
+    	</div>
+    </div>
+</div>

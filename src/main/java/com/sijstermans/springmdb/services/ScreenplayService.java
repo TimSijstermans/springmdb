@@ -21,4 +21,8 @@ public interface ScreenplayService {
 	
 	public Screenplay findByPersonId(int id);
 
+	public int addMovie(Movie m);
+
+	public int addSeries(Series s);
+	
 }
