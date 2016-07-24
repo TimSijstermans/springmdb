@@ -4,7 +4,7 @@
 
 	<groupId>com.sijstermans</groupId>
 	<artifactId>springmdb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.8</version>
 	<packaging>war</packaging>
 
 	<name>Spring Movie database</name>
@@ -19,6 +19,13 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
