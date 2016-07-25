@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sijstermans.springmdb.models.Director;
 import com.sijstermans.springmdb.models.Person;
+import com.sijstermans.springmdb.models.Screenplay;
 import com.sijstermans.springmdb.services.PersonService;
+import com.sijstermans.springmdb.services.ScreenplayService;
 
 
 @Controller
@@ -21,10 +23,19 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 	
+	@Autowired
+	private ScreenplayService screenplayService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Person> getPersons() {
 		return personService.findAll();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Person getPersonById(@PathVariable int id) {
+		return personService.findById(id);
 	}
 	
 	@RequestMapping(value = "/directors", method = RequestMethod.GET)
@@ -32,6 +43,13 @@ public class PersonController {
 	public List<Director> getDirectors() {
 		return personService.findAllDirectors();
 	}
+	
+	@RequestMapping(value = "/{id}/screenplays", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Screenplay> getScreenplaysByPersonId(@PathVariable int id) {
+		
+		return screenplayService.findScreenplaysByPersonId(id);
+	}	
 	
 	@RequestMapping(value = "/directors/{id}", method = RequestMethod.GET)
 	@ResponseBody

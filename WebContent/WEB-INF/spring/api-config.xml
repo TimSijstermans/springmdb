@@ -15,18 +15,20 @@
 
 	<!-- <bean name="starter" init-method="seedData" class="com.sijstermans.springmdb.DataSeeder" 
 		lazy-init="false"> <property name="sF" ref="sessionFactory" /> </bean> -->
-<bean name="starter" init-method="seedData" class="com.sijstermans.springmdb.DataSeeder" 
-		lazy-init="false"> <property name="sF" ref="sessionFactory" /> </bean>
+	<bean name="starter" init-method="seedData" class="com.sijstermans.springmdb.DataSeeder" lazy-init="false"> 
+		<property name="sF" ref="sessionFactory" /> 
+	</bean>
 		
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/springmdb?useSSL=false&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
+		<property name="url" value="jdbc:mysql://localhost:3306/springmdb?useSSL=false&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true" />
 	</bean>
+	
 	<!-- jdbc:mysql://localhost:3306/springmdb?useSSL=false&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC -->
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -37,8 +39,6 @@
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-
 </beans>
 
 

@@ -14,7 +14,7 @@
 			        <div class="card-panel brown lighten-1 hoverable">
 						<span class="white-text">
 							 {{movie.director.name}} {{movie.director.lastname}} </br>
-	           				Geboortedatum: {{movie.director.birthdate}}	
+	           				Geboortedatum: {{movie.director.birthdate | date}}	
 						</span>
 			        </div>
 	            <p> Acteurs: </p>
@@ -22,7 +22,7 @@
 				        <div class="card-panel brown lighten-1 hoverable">
 							<span class="white-text">
 								{{actor.name}} {{actor.lastname}} </br>
-		           				Geboortedatum: {{actor.birthdate}}	
+		           				Geboortedatum: {{actor.birthdate | date }}	
 							</span>
 				        </div>
 	            </span>

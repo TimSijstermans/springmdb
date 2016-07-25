@@ -29,7 +29,7 @@ public class DataSeeder {
 		Director dB = new Director("Johan", "Tillema", new Date(makeDate("01-09-1969")));
 		Director dC = new Director("Steven", "Speelberg", new Date(makeDate("01-09-1942")));
 		
-		Actor aA = new Actor("Brad", "Pid", new Date(makeDate("25-02-1973")));
+		Actor aA = new Actor("Bart", "Pit", new Date(makeDate("25-02-1973")));
 		Actor aB = new Actor("Nicolaas", "Kooi", new Date(makeDate("16-11-1965")));
 		Actor aC = new Actor("Angelientje", "Jolig", new Date(makeDate("08-02-1973")));
 		Actor aD = new Actor("David", "Hassemoff", new Date(makeDate("21-03-1981")));

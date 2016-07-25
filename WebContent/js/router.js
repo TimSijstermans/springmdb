@@ -46,16 +46,16 @@ angular.module('mdbApp')
                 controller: 'PersonController'
             })
             .when('/persons/actors/:id', {
-                templateUrl: 'views/persons/actordetail.html',
-                controller: 'PersonController'
+                templateUrl: 'views/persons/persondetail.html',
+                controller: 'PersonDetailController'
             })
             .when('/persons/directors', {
                 templateUrl: 'views/persons/directors.html',
                 controller: 'PersonController'
             })
             .when('/persons/directors/:id', {
-                templateUrl: 'views/persons/directordetail.html',
-                controller: 'PersonController'
+                templateUrl: 'views/persons/persondetail.html',
+                controller: 'PersonDetailController'
             })
             .when('', {redirectTo: '/'})
             .otherwise({redirectTo: '/'});

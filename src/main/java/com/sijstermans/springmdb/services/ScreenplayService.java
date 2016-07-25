@@ -2,7 +2,9 @@ package com.sijstermans.springmdb.services;
 
 import java.util.List;
 
+import com.sijstermans.springmdb.models.Director;
 import com.sijstermans.springmdb.models.Movie;
+import com.sijstermans.springmdb.models.Person;
 import com.sijstermans.springmdb.models.Screenplay;
 import com.sijstermans.springmdb.models.Series;
 
@@ -24,5 +26,7 @@ public interface ScreenplayService {
 	public int addMovie(Movie m);
 
 	public int addSeries(Series s);
+
+	public List<Screenplay> findScreenplaysByPersonId(int personId);
 	
 }

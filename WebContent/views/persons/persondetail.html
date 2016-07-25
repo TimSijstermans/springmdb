@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="card">
+		<div class="col s5">    
+	    	<div class="card-content grey-text text-darken-3">
+	            <span class="card-title">{{person.name}} {{person.lastname}}</span>
+	            
+	            <p><b>Birthdate: </b>{{person.birthdate | date}}</p>
+	            <p><b>Job: </b>{{person.job}}</p>
+	           
+	            <p><b>Films/series waaraan {{person.name}} heeft gewerkt: </b></p>
+	            <span ng-repeat="screenplay in screenplays">
+			        <div class="card brown lighten-1 hoverable">
+						<span class="white-text">
+							<span class="card-title">{{screenplay.name}} </span></br>
+	           				<b>Soort media:</b> {{screenplay.type}}
+						</span>
+						<div class="card-action">
+							<a ng-show="screenplay.type == 'Series'" href="#/screenplays/series/{{screenplay.screenplayId}}">Meer informatie</a>
+							<a ng-show="screenplay.type == 'Movie'" href="#/screenplays/movies/{{screenplay.screenplayId}}">Meer informatie</a>
+						</div>
+			        </div>
+	            </span>
+	        </div>
+	    </div>
+	</div>
+</div>

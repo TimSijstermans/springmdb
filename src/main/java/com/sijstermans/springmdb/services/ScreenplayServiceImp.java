@@ -3,7 +3,6 @@ package com.sijstermans.springmdb.services;
 import java.util.List;
 
 import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +11,7 @@ import com.sijstermans.springmdb.dao.MovieDao;
 import com.sijstermans.springmdb.dao.ScreenplayDao;
 import com.sijstermans.springmdb.dao.SeriesDao;
 import com.sijstermans.springmdb.models.Movie;
+import com.sijstermans.springmdb.models.Person;
 import com.sijstermans.springmdb.models.Screenplay;
 import com.sijstermans.springmdb.models.Series;
 
@@ -92,5 +92,17 @@ public class ScreenplayServiceImp implements ScreenplayService {
 	@Override
 	public int addSeries(Series s) {
 		return seriesDao.addSeries(s);
+	}
+
+	@Override
+	public List<Screenplay> findScreenplaysByPersonId(int personId) {
+		List<Screenplay> sp = screenplayDao.findByPersonId(personId);
+		for (Screenplay entry : sp) {
+			Hibernate.initialize(entry.getActors());
+			if (entry.getClass().equals(Series.class)){
+				Hibernate.initialize(((Series) entry).getEpisodes());
+			}
+		}
+		return sp;
 	}
 }
