@@ -20,8 +20,6 @@ It expects a mysql server to be running at localhost:3306 with password 'root'
 Run with: 
 docker run --net=host -p 8080:8080 -d springmdb:0.8
 
-https://hub.docker.com/r/timsijstermans/springmdb
-
 Alternatively use the docker-compose file which is included in the repository to spin both up at once on a VM.
 
 When using the Docker image or docker-compose file the site is served at the root of the url. (url:8080/) 
