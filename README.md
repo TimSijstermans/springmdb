@@ -5,12 +5,14 @@ Movie Database: Spring backend / Angularjs frontend
 - Serves AngularJS frontend at /springmdb/
 
 At the moment this will reseed/recreate the database everytime it's started.
+It expects a mysql server to be running at localhost:3306 with password 'root'
 
-Tools used:
+###Tools used:
 - Spring ToolSuite (Java)
 - Maven
 - WebStorm - JetBrains (Angular client)
 
+###Dockerized
 Docker image available at 
 
 https://hub.docker.com/r/timsijstermans/springmdb/
