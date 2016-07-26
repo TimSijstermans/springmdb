@@ -6,7 +6,8 @@ services:
         ports:
             - "8080"
         network_mode: host
-        depends_on: mymysql
+        depends_on:
+        - mymysql
     mymysql:
         image: mysql
         ports:
