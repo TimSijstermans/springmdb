@@ -24,6 +24,8 @@ https://hub.docker.com/r/timsijstermans/springmdb
 
 Alternatively use the docker-compose file which is included in the repository to spin both up at once on a VM.
 
+When using the Docker image or docker-compose file the site is served at the root of the url. (url:8080/) 
+
 # Todo:
 - Clientside + Serverside Form validation
 - New person
