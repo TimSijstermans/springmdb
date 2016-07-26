@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sijstermans.springmdb.dao.EpisodeDao;
 import com.sijstermans.springmdb.dao.MovieDao;
 import com.sijstermans.springmdb.dao.ScreenplayDao;
 import com.sijstermans.springmdb.dao.SeriesDao;
+import com.sijstermans.springmdb.models.Episode;
 import com.sijstermans.springmdb.models.Movie;
-import com.sijstermans.springmdb.models.Person;
 import com.sijstermans.springmdb.models.Screenplay;
 import com.sijstermans.springmdb.models.Series;
 
@@ -21,6 +22,9 @@ public class ScreenplayServiceImp implements ScreenplayService {
 
 	@Autowired
 	SeriesDao seriesDao;
+	
+	@Autowired
+	EpisodeDao episodeDao;
 	
 	@Autowired
 	MovieDao movieDao;
@@ -104,5 +108,20 @@ public class ScreenplayServiceImp implements ScreenplayService {
 			}
 		}
 		return sp;
+	}
+
+	@Override
+	public int addEpisode(Episode episode) {
+		return episodeDao.addEpisode(episode);
+	}
+
+	@Override
+	public void deleteEpisode(int id) {
+		episodeDao.deleteEpisode(id);		
+	}
+
+	@Override
+	public void deleteScreenplay(int id) {
+		screenplayDao.delete(id);		
 	}
 }

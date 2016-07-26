@@ -2,7 +2,6 @@ package com.sijstermans.springmdb.services;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sijstermans.springmdb.dao.DirectorDao;
 import com.sijstermans.springmdb.dao.PersonDao;
 import com.sijstermans.springmdb.models.Director;
-import com.sijstermans.springmdb.models.Movie;
 import com.sijstermans.springmdb.models.Person;
 
 @Transactional

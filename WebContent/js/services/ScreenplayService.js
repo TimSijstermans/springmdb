@@ -12,3 +12,7 @@ app.factory("Movie", function($resource) {
 app.factory("Series", function($resource) {
     return $resource("api/screenplays/series/:id");
 });
+
+app.factory("Episode", function($resource) {
+    return $resource("api/screenplays/series/episode/:id");
+});

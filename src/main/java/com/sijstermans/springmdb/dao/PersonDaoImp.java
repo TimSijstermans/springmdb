@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.sijstermans.springmdb.models.Person;
-import com.sijstermans.springmdb.models.Series;
 
 @Repository
 public class PersonDaoImp extends AbstractDao implements PersonDao{

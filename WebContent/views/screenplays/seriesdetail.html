@@ -3,7 +3,7 @@
 	<div class="card">
 		<div class="col s5">    
 	        <div class="card-content grey-text text-darken-3">
-	            <span class="card-title">{{series.name}}</span>
+	            <span class="card-title">{{series.name}}<span class="right"><a class="grey-text text-darken-3" ng-click="deleteSeries(series.screenplayId)"><i class="fa fa-trash-o"></i></a></span></span>
 	            
 	            <p><b>Rating: </b>{{series.rating}}</p>
 	            <p><b>Type media: </b>{{series.type}}</p>
@@ -34,11 +34,13 @@
 	            <span class="card-title">Afleveringen: </span>
 				<span ng-repeat="episode in series.episodes">
 					<div class="card-panel brown lighten-1 white-text hoverable">
-						<span class="card-title">{{episode.name}}</span>
+						<span class="card-title">{{episode.name}} <span class="right"><a class="white-text" ng-click="deleteEpisode(episode.episode_id)"><i class="fa fa-trash-o"></i></a></span></span>
 						<p><b>Omschrijving:</b> </p>
 						<p> {{episode.description}} </p>
+						<p> {{deleteEpisodeError}}</p>
 					</div>
 				</span>
+				<a class="waves-effect waves-light brown lighten-5 btn grey-text text-darken-3" href="#/screenplays/series/{{series.screenplayId}}/newepisode"><i class="fa fa-plus-square" aria-hidden="true"></i> Nieuwe episode</a>
 	        </div>
 		</div>
 	</div>

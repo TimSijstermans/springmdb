@@ -25,6 +25,10 @@ angular.module('mdbApp')
                 templateUrl: 'views/screenplays/seriesdetail.html',
                 controller: 'SeriesDetailController'
             })
+            .when('/screenplays/series/:id/newepisode', {
+                templateUrl: 'views/screenplays/newepisode.html',
+                controller: 'NewEpisodeController'
+            })
             .when('/screenplays/movies', {
                 templateUrl: 'views/screenplays/movies.html',
                 controller: 'ScreenplayController'
@@ -39,7 +43,7 @@ angular.module('mdbApp')
             })
             .when('/persons/new', {
                 templateUrl: 'views/persons/newperson.html',
-                controller: 'PersonController'
+                controller: 'NewPersonController'
             })
             .when('/persons/actors', {
                 templateUrl: 'views/persons/actors.html',

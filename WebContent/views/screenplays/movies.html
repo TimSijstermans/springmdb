@@ -1,9 +1,12 @@
-<p>Op deze pagina staan alle films uit de database</p>
-
-<a class="waves-effect waves-light brown lighten-5 btn grey-text text-darken-3" href="#/screenplays/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Nieuw</a>
-
-
-<div class="row" ng-repeat="screenplay in screenplays" ng-if="screenplay.type == 'Movie'">
+<div>
+	<p>Op deze pagina staan alle films uit de database</p>
+	
+	<a class="waves-effect waves-light brown lighten-5 btn grey-text text-darken-3" href="#/screenplays/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Nieuw</a>
+</div>
+<div>
+	<label>Zoek: <input ng-model="searchText"></label>
+</div>
+<div class="row" ng-repeat="screenplay in screenplays | filter:searchText | orderBy:'name'" ng-if="screenplay.type == 'Movie'">
     <div class="col s12 m6">
         <div class="card brown lighten-1 hoverable">
             <div class="card-content white-text">

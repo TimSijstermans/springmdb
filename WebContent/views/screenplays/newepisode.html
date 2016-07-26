@@ -1,0 +1,17 @@
+<form name="newEpisodeForm">
+	<p> Nieuwe episode voor {{series.name}}</p>
+	<div>
+		<label for="title">Titel</label>
+		<input type="text" ng-model="episode.name" class="form-control" id="title" placeholder="Titel" required />
+	</div>
+	<div>
+		<label for=""description">Omschrijving</label>
+		<input type="text" ng-model="episode.description" class="form-control" id="description" placeholder="Omschrijving" required />
+	</div>
+	<div>
+		<input type="submit" class="btn btn-primary" value="Save" ng-click="submitEpisode()"/>
+	</div>
+</form>
+
+<p>{{errormessage}}</p>
+{{save}}

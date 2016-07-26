@@ -2,6 +2,7 @@ package com.sijstermans.springmdb.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +19,7 @@ public class Series extends Screenplay {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "series_id")
+	@OneToMany(orphanRemoval=true, fetch = FetchType.LAZY, mappedBy = "series_id")
 	private List<Episode> episodes;
 	
 	@Transient

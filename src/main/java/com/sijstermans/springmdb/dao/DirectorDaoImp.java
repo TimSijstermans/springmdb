@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.sijstermans.springmdb.models.Director;
-import com.sijstermans.springmdb.models.Movie;
 
 
 @Repository

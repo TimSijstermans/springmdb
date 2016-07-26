@@ -2,9 +2,8 @@ package com.sijstermans.springmdb.services;
 
 import java.util.List;
 
-import com.sijstermans.springmdb.models.Director;
+import com.sijstermans.springmdb.models.Episode;
 import com.sijstermans.springmdb.models.Movie;
-import com.sijstermans.springmdb.models.Person;
 import com.sijstermans.springmdb.models.Screenplay;
 import com.sijstermans.springmdb.models.Series;
 
@@ -28,5 +27,11 @@ public interface ScreenplayService {
 	public int addSeries(Series s);
 
 	public List<Screenplay> findScreenplaysByPersonId(int personId);
+
+	public int addEpisode(Episode episode);
+
+	public void deleteEpisode(int id);
+
+	public void deleteScreenplay(int id);
 	
 }

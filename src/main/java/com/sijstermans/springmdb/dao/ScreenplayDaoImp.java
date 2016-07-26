@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.sijstermans.springmdb.models.Person;
+import com.sijstermans.springmdb.models.Episode;
 import com.sijstermans.springmdb.models.Screenplay;
 
 @Repository
@@ -32,5 +32,12 @@ public class ScreenplayDaoImp extends AbstractDao implements ScreenplayDao {
 					.add(Restrictions.eq("actorAlias.personId", personId))
 		).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);	
 		return crit.list();
+	}
+
+	@Override
+	public void delete(int id) {
+		Session s = getSession();
+		Screenplay toDel = s.get(Screenplay.class, id);
+		s.delete(toDel);	
 	}
 }
