@@ -2,6 +2,7 @@ package com.sijstermans.springmdb.services;
 
 import java.util.List;
 
+import com.sijstermans.springmdb.models.Actor;
 import com.sijstermans.springmdb.models.Director;
 import com.sijstermans.springmdb.models.Person;
 
@@ -13,5 +14,9 @@ public interface PersonService {
 	List<Director> findAllDirectors();
 	
 	Director findDirectorById(int id);
+
+	Actor findActorById(int id);
+
+	List<Actor> findAllActors();
 
 }

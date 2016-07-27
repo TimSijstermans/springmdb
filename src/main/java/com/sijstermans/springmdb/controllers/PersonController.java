@@ -26,6 +26,12 @@ public class PersonController {
 	@Autowired
 	private ScreenplayService screenplayService;
 	
+	/***************************************************************
+	 *  														   *
+	 * 							 PERSONS	                       *
+	 * 															   * 
+	 ***************************************************************/
+	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Person> getPersons() {
@@ -38,19 +44,24 @@ public class PersonController {
 		return personService.findById(id);
 	}
 	
+	@RequestMapping(value = "/{id}/screenplays", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Screenplay> getScreenplaysByPersonId(@PathVariable int id) {
+		return screenplayService.findByPersonId(id);
+	}	
+	
+	/***************************************************************
+	 *  														   *
+	 * 							 DIRECTOR	                       *
+	 * 															   * 
+	 ***************************************************************/
+	
 	@RequestMapping(value = "/directors", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Director> getDirectors() {
 		return personService.findAllDirectors();
 	}
-	
-	@RequestMapping(value = "/{id}/screenplays", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Screenplay> getScreenplaysByPersonId(@PathVariable int id) {
-		
-		return screenplayService.findScreenplaysByPersonId(id);
-	}	
-	
+
 	@RequestMapping(value = "/directors/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Director getDirectorById(@PathVariable int id) {

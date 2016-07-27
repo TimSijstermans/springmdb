@@ -25,27 +25,51 @@ import com.sijstermans.springmdb.services.ScreenplayService;
 @RestController
 @RequestMapping(value = "/screenplays")
 public class ScreenplayController {
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Post data invalid")
+	class InvalidInputException extends RuntimeException{
+		public InvalidInputException(String message){		
+			super(message);
+		}
+	}
+	
 	@Autowired
 	private ScreenplayService screenplayService;
 	
+
+	/***************************************************************
+	 *  														   *
+	 * 							 SCREENPLAYS                       *
+	 * 															   * 
+	 ***************************************************************/
+	
+	//Get all
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Screenplay> getScreenplays() {
 		return screenplayService.findAll();
 	}
+
+	/***************************************************************
+	 * 															   *
+	 * 								SERIES						   *
+	 * 															   *
+	 ***************************************************************/
 	
+	//Get all
 	@RequestMapping(value = "/series", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Series> getSeries() {
 		return screenplayService.findAllSeries();
 	}
 	
+	//Get one
 	@RequestMapping(value = "/series/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Series getSeriesById(@PathVariable int id) {
-		return screenplayService.findSeriesById(id);
+		return (Series) screenplayService.findById(id);
 	}
 	
+	//New Series
 	@RequestMapping(value = "/series", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
@@ -53,9 +77,11 @@ public class ScreenplayController {
 		if(bindingResult.hasErrors()){
 			throw new InvalidInputException("Series post data malformed: " + bindingResult.getFieldErrors());
 		}
-		return screenplayService.findSeriesById(screenplayService.addSeries(series));
+		screenplayService.add(series);
+		return series;
 	}
 	
+	//Delete Series
 	@RequestMapping(value = "/series/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
@@ -63,35 +89,7 @@ public class ScreenplayController {
 		screenplayService.deleteScreenplay(id);
 	}
 	
-	@RequestMapping(value = "/movies", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Movie> getMovies() {
-		return screenplayService.findAllMovies();
-	}
-	
-	@RequestMapping(value = "/movies/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Movie getMovieById(@PathVariable int id) {
-		return screenplayService.findMovieById(id);
-	}
-	
-	@RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public void deleteMovie(@PathVariable int id) {
-		screenplayService.deleteScreenplay(id);
-	}
-	
-	@RequestMapping(value = "/movies", method = RequestMethod.POST)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.CREATED)
-	public Movie postMovie(@Valid @RequestBody Movie movie, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()){
-			throw new InvalidInputException("Movies post data malformed: " + bindingResult.getFieldErrors());
-		}
-		return screenplayService.findMovieById(screenplayService.addMovie(movie));
-	}
-	
+	//New Episode
 	@RequestMapping(value = "/series/episode", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
@@ -103,28 +101,59 @@ public class ScreenplayController {
 	
 		Series s = ctx.getSeries();
 		episode.setSeries_id(s);
-		
-		System.out.println(episode.getName());
-		System.out.println(episode.getDescription());
-		System.out.println(episode.getSeries_id().getName());
+
 		screenplayService.addEpisode(episode);
 
 		return s;
 	}
 	
+	//Delete Episode
 	@RequestMapping(value = "/series/episode/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteEpisode(@PathVariable int id) {
 		screenplayService.deleteEpisode(id);
 	}
-		
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Post data invalid")
-	class InvalidInputException extends RuntimeException{
-		public InvalidInputException(String message){		
-			super(message);
-		}
+	
+	
+	/***************************************************************
+	 * 															   * 
+	 * 								MOVIES						   *
+	 * 															   * 
+	 ***************************************************************/
+	
+	//Get all
+	@RequestMapping(value = "/movies", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Movie> getMovies() {
+		return screenplayService.findAllMovies();
 	}
 	
+	//Get one
+	@RequestMapping(value = "/movies/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Movie getMovieById(@PathVariable int id) {
+		return (Movie) screenplayService.findById(id);
+	}	
+	
+	//New Movie
+	@RequestMapping(value = "/movies", method = RequestMethod.POST)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.CREATED)
+	public Movie postMovie(@Valid @RequestBody Movie movie, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()){
+			throw new InvalidInputException("Movies post data malformed: " + bindingResult.getFieldErrors());
+		}
+		screenplayService.add(movie);
+		return movie;
+	}
+	
+	//Delete Movie
+	@RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteMovie(@PathVariable int id) {
+		screenplayService.deleteScreenplay(id);
+	}
 
 }

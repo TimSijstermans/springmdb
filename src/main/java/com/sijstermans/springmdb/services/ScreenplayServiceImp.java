@@ -32,8 +32,49 @@ public class ScreenplayServiceImp implements ScreenplayService {
 	@Autowired
 	ScreenplayDao screenplayDao;
 	
+	@Override
+	public void add(Screenplay sp) {
+		screenplayDao.add(sp);
+	}
+	
+	@Override
+	public void addEpisode(Episode episode) {
+		episodeDao.add(episode);
+	}
+
+	@Override
+	public void deleteEpisode(int id) {
+		episodeDao.delete(episodeDao.find(id));		
+	}
+
+	@Override
+	public void deleteScreenplay(int id) {
+		screenplayDao.delete(screenplayDao.find(id));		
+	}
+
+	@Override
+	public List<Screenplay> findAll() {
+		List<Screenplay> sp = screenplayDao.getAll();
+		for (Screenplay entry : sp) {
+			Hibernate.initialize(entry.getActors());
+			if (entry.getClass().equals(Series.class)){
+				Hibernate.initialize(((Series) entry).getEpisodes());
+			}
+		}
+		return sp;
+	}
+
+	@Override
+	public List<Movie> findAllMovies() {
+		List<Movie> m = movieDao.getAll();
+		for (Movie entry : m) {
+			Hibernate.initialize(entry.getActors());
+		}
+		return m;
+	}
+
 	public List<Series> findAllSeries() {
-		List<Series> s = seriesDao.findAll();
+		List<Series> s = seriesDao.getAll();
 		for (Series entry : s) {
 			Hibernate.initialize(entry.getEpisodes());
 			Hibernate.initialize(entry.getActors());
@@ -42,65 +83,18 @@ public class ScreenplayServiceImp implements ScreenplayService {
 	}
 
 	@Override
-	public List<Movie> findAllMovies() {
-		List<Movie> m = movieDao.findAll();
-		for (Movie entry : m) {
-			Hibernate.initialize(entry.getActors());
-		}
-		return m;
-	}
-
-	@Override
-	public List<Screenplay> findAll() {
-		List<Screenplay> sp = screenplayDao.findAll();
-		for (Screenplay entry : sp) {
-			Hibernate.initialize(entry.getActors());
-			if (entry.getClass().equals(Series.class)){
-				Hibernate.initialize(((Series) entry).getEpisodes());
-			}
-		}
-		return sp;
-	}
-
-	@Override
-	public Series findSeriesById(int id) {
-		Series s =  seriesDao.findById(id);
-		Hibernate.initialize(s.getActors());
-		Hibernate.initialize(s.getEpisodes());
-		return s;
-	}
-
-	@Override
-	public Movie findMovieById(int id) {
-		Movie m =  movieDao.findById(id);
-		Hibernate.initialize(m.getActors());
-		return m;
-	}
-
-	@Override
 	public Screenplay findById(int id) {
-		return null;
+		Screenplay sp = screenplayDao.find(id);
+		Hibernate.initialize(sp.getActors());
+		if ( sp.getClass().equals(Series.class)){
+			Hibernate.initialize(((Series) sp).getEpisodes());
+		}
+		return sp;
 	}
 
 	@Override
-	public Screenplay findByPersonId(int id) {
-		
-		return null;
-	}
-
-	@Override
-	public int addMovie(Movie m) {
-		return movieDao.addMovie(m);
-	}
-
-	@Override
-	public int addSeries(Series s) {
-		return seriesDao.addSeries(s);
-	}
-
-	@Override
-	public List<Screenplay> findScreenplaysByPersonId(int personId) {
-		List<Screenplay> sp = screenplayDao.findByPersonId(personId);
+	public List<Screenplay> findByPersonId(int id) {
+		List<Screenplay> sp = screenplayDao.findByPersonId(id);
 		for (Screenplay entry : sp) {
 			Hibernate.initialize(entry.getActors());
 			if (entry.getClass().equals(Series.class)){
@@ -108,20 +102,5 @@ public class ScreenplayServiceImp implements ScreenplayService {
 			}
 		}
 		return sp;
-	}
-
-	@Override
-	public int addEpisode(Episode episode) {
-		return episodeDao.addEpisode(episode);
-	}
-
-	@Override
-	public void deleteEpisode(int id) {
-		episodeDao.deleteEpisode(id);		
-	}
-
-	@Override
-	public void deleteScreenplay(int id) {
-		screenplayDao.delete(id);		
 	}
 }

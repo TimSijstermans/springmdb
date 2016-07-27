@@ -5,9 +5,15 @@ import java.util.List;
 import com.sijstermans.springmdb.models.Series;
 
 public interface SeriesDao {
-	List<Series> findAll();
-
-	Series findById(int id);
-
-	int addSeries(Series s);
+	void add(Series entity);
+    
+    void saveOrUpdate(Series entity);
+       
+    void update(Series entity);
+     
+    void delete(Series entity);
+       
+    Series find(Integer key);
+     
+    List<Series> getAll();
 }

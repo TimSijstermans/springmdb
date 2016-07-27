@@ -12,15 +12,8 @@ import com.sijstermans.springmdb.models.Episode;
 import com.sijstermans.springmdb.models.Screenplay;
 
 @Repository
-public class ScreenplayDaoImp extends AbstractDao implements ScreenplayDao {
+public class ScreenplayDaoImp extends AbstractDao<Screenplay, Integer> implements ScreenplayDao {
 	
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Screenplay> findAll(){
-		Session s = getSession();
-		return (ArrayList<Screenplay>) s.createCriteria(Screenplay.class).list();
-	}
-
 	@Override
 	public List<Screenplay> findByPersonId(int personId) {
 		Session s = getSession();
@@ -32,12 +25,5 @@ public class ScreenplayDaoImp extends AbstractDao implements ScreenplayDao {
 					.add(Restrictions.eq("actorAlias.personId", personId))
 		).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);	
 		return crit.list();
-	}
-
-	@Override
-	public void delete(int id) {
-		Session s = getSession();
-		Screenplay toDel = s.get(Screenplay.class, id);
-		s.delete(toDel);	
 	}
 }
