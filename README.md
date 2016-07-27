@@ -31,8 +31,9 @@ When using the Docker image or docker-compose file the site is served at the roo
 
 # Todo:
 - Clientside + Serverside Form validation
-- New person
+- New person (clientside)
+- Delete on persons (clientside)
+- Add person to screenplay
 - Update on everything
-- Delete on persons
 - Tests
 
