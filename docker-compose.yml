@@ -2,7 +2,7 @@ version: '2'
 
 services:
     tomcat:
-        image: timsijstermans/springmdb:0.8
+        image: timsijstermans/springmdb:0.9
         ports:
             - "8080"
         network_mode: host
