@@ -103,4 +103,9 @@ public class ScreenplayServiceImp implements ScreenplayService {
 		}
 		return sp;
 	}
+
+	@Override
+	public void update(Screenplay sp) {
+		screenplayDao.update(sp);
+	}
 }

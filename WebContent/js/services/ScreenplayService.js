@@ -6,11 +6,19 @@ app.factory("Screenplay", function($resource) {
 });
 
 app.factory("Movie", function($resource) {
-    return $resource("api/screenplays/movies/:id");
+	return $resource("api/screenplays/movies/:id", null, 
+		{
+			'update': { method:'PUT' }
+		}
+	);
 });
 
 app.factory("Series", function($resource) {
-    return $resource("api/screenplays/series/:id");
+    return $resource("api/screenplays/series/:id", null, 
+		{
+			'update': { method:'PUT' }
+		}
+    );
 });
 
 app.factory("Episode", function($resource) {

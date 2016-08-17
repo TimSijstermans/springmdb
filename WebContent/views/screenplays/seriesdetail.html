@@ -3,7 +3,7 @@
 	<div class="card">
 		<div class="col s5">    
 	        <div class="card-content grey-text text-darken-3">
-	            <span class="card-title">{{series.name}}<span class="right"><a class="grey-text text-darken-3" ng-click="deleteSeries(series.screenplayId)"><i class="fa fa-trash-o"></i></a></span></span>
+	            <span class="card-title">{{series.name}}<span class="right"><a class="grey-text text-darken-3" href="#/screenplays/series/{{series.screenplayId}}/edit"><i class="fa fa-pencil"></i></a> <a class="grey-text text-darken-3" href="" ng-click="deleteSeries(series.screenplayId)"><i class="fa fa-trash-o"></i></a></span></span>
 	            
 	            <p><b>Rating: </b>{{series.rating}}</p>
 	            <p><b>Type media: </b>{{series.type}}</p>
@@ -12,20 +12,24 @@
 	                {{series.description}}
 	            </p>
 	            <p><b>Geregisseerd door:</b></p>
-		        <div class="card-panel brown lighten-1 hoverable">
-					<span class="white-text">
-						 {{series.director.name}} {{series.director.lastname}} </br>
-	          				<b>Geboortedatum:</b> {{series.director.birthdate | date}}
-					</span>
-		        </div>
-	            <p><b>Acteurs:</b></p>
-	            <span ng-repeat="actor in series.actors">
+		        <a href="#/persons/directors/{{series.director.person_id}}">
 			        <div class="card-panel brown lighten-1 hoverable">
 						<span class="white-text">
-							{{actor.name}} {{actor.lastname}} </br>
-	           				<b>Geboortedatum:</b> {{actor.birthdate | date}}
+							 {{series.director.name}} {{series.director.lastname}} </br>
+		          				<b>Geboortedatum:</b> {{series.director.birthdate | date}}
 						</span>
 			        </div>
+		        </a>
+	            <p><b>Acteurs:</b></p>
+	            <span ng-repeat="actor in series.actors">
+			        <a href="#/persons/actors/{{actor.person_id}}">
+				        <div class="card-panel brown lighten-1 hoverable">
+							<span class="white-text">
+								{{actor.name}} {{actor.lastname}} </br>
+		           				<b>Geboortedatum:</b> {{actor.birthdate | date}}
+							</span>
+				        </div>
+			        </a>
 	            </span>
 	        </div>
 	    </div>

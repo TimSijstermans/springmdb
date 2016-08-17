@@ -48,7 +48,7 @@ public class ScreenplayController {
 	public List<Screenplay> getScreenplays() {
 		return screenplayService.findAll();
 	}
-
+	
 	/***************************************************************
 	 * 															   *
 	 * 								SERIES						   *
@@ -66,6 +66,9 @@ public class ScreenplayController {
 	@RequestMapping(value = "/series/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Series getSeriesById(@PathVariable int id) {
+		if(!screenplayExists(id)){
+			throw new InvalidInputException("Series doesn't exist; can't get series");
+		}
 		return (Series) screenplayService.findById(id);
 	}
 	
@@ -77,7 +80,25 @@ public class ScreenplayController {
 		if(bindingResult.hasErrors()){
 			throw new InvalidInputException("Series post data malformed: " + bindingResult.getFieldErrors());
 		}
+		if(screenplayExists(series.getScreenplayId())){
+			throw new InvalidInputException("Series already exists; can't add series");
+		}
 		screenplayService.add(series);
+		return series;
+	}
+	
+	//Update Series
+	@RequestMapping(value = "/series/{id}", method = RequestMethod.PUT)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public Series putSeries(@Valid @RequestBody Series series, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()){
+			throw new InvalidInputException("Series post data malformed: " + bindingResult.getFieldErrors());
+		}
+		if(!screenplayExists(series.getScreenplayId())){
+			throw new InvalidInputException("Series doesn't exist; can't update");
+		}
+		screenplayService.update(series);
 		return series;
 	}
 	
@@ -86,6 +107,9 @@ public class ScreenplayController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteSeries(@PathVariable int id) {
+		if(!screenplayExists(id)){
+			throw new InvalidInputException("Series doesn't exist; can't delete");
+		}
 		screenplayService.deleteScreenplay(id);
 	}
 	
@@ -97,11 +121,15 @@ public class ScreenplayController {
 		if(bindingResult.hasErrors()){
 			throw new InvalidInputException("Episode post data malformed: " + bindingResult.getFieldErrors());
 		}
+
 		Episode episode = ctx.getEpisode();
 	
 		Series s = ctx.getSeries();
+		if(!screenplayExists(s.getScreenplayId())){
+			throw new InvalidInputException("Series doesn't exist; can't add episode");
+		}
+		
 		episode.setSeries_id(s);
-
 		screenplayService.addEpisode(episode);
 
 		return s;
@@ -133,6 +161,9 @@ public class ScreenplayController {
 	@RequestMapping(value = "/movies/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Movie getMovieById(@PathVariable int id) {
+		if(!screenplayExists(id)){
+			throw new InvalidInputException("Movie doesn't exist; can't get movie");
+		}
 		return (Movie) screenplayService.findById(id);
 	}	
 	
@@ -144,7 +175,25 @@ public class ScreenplayController {
 		if(bindingResult.hasErrors()){
 			throw new InvalidInputException("Movies post data malformed: " + bindingResult.getFieldErrors());
 		}
+		if(screenplayExists(movie.getScreenplayId())){
+			throw new InvalidInputException("Movie already exists; can't add movie");
+		}
 		screenplayService.add(movie);
+		return movie;
+	}
+	
+	//Update Movie
+	@RequestMapping(value = "/movies/{id}", method = RequestMethod.PUT)
+	@ResponseBody
+	@ResponseStatus(HttpStatus.CREATED)
+	public Movie putMovie(@Valid @RequestBody Movie movie, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()){
+			throw new InvalidInputException("Movies put data malformed: " + bindingResult.getFieldErrors());
+		}
+		if(!screenplayExists(movie.getScreenplayId())){
+			throw new InvalidInputException("Movie doesn't exist; can't update movie");
+		}
+		screenplayService.update(movie);
 		return movie;
 	}
 	
@@ -153,7 +202,17 @@ public class ScreenplayController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteMovie(@PathVariable int id) {
+		if(!screenplayExists(id)){
+			throw new InvalidInputException("Movie doesn't exist; can't delete movie");
+		}
 		screenplayService.deleteScreenplay(id);
 	}
-
+	
+	private boolean screenplayExists(int id){
+		if(screenplayService.findById(id) != null){
+			return true;
+		}
+		return false;
+	}
+	
 }

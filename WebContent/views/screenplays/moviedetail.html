@@ -2,7 +2,7 @@
    	<div class="card">
    		<div class="col s10 ">
 	        <div class="card-content grey-text text-darken-3">
-	            <span class="card-title">{{movie.name}}<span class="right"><a class="grey-text text-darken-3" ng-click="deleteMovie(movie.screenplayId)"><i class="fa fa-trash-o"></i></a></span></span>
+	            <span class="card-title">{{movie.name}}<span class="right"><a class="grey-text text-darken-3" href="#/screenplays/movies/{{movie.screenplayId}}/edit"><i class="fa fa-pencil"></i></a>  <a class="grey-text text-darken-3" href="" ng-click="deleteMovie(movie.screenplayId)"><i class="fa fa-trash-o"></i></a></span></span>
 	            
 	            <p>Rating: {{movie.rating}}</p>
 	            <p>Type media: {{movie.type}}</p>

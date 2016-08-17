@@ -24,5 +24,7 @@ public interface ScreenplayService {
 
 	public Screenplay findById(int id);
 
-	public List<Screenplay> findByPersonId(int id);	
+	public List<Screenplay> findByPersonId(int id);
+
+	public void update(Screenplay sp);	
 }

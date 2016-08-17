@@ -1,0 +1,34 @@
+<form name="updateMovieForm">
+
+	<div>
+		<label for="title">Titel</label>
+		<input type="text" ng-model="movie.name" class="form-control" id="title" placeholder="Titel" required />
+	</div>
+	<div>
+		<label>Regisseur</label>
+		<div>
+			<select class="browser-default" ng-model="movie.director" id="director" ng-options="director as director.name + ' ' + director.lastname for director in directors" required >
+		    </select>
+	    </div>
+	</div>
+	<div>
+		<label>Speelduur</label>
+		<input type="text" ng-model="movie.length" class="form-control" id="length" placeholder="speelduur volgens hh:mm:ss (01:23:00 voor 1 uur 23 minuten)"/>
+	</div>
+	<div>
+		<label>Rating</label>
+		<div>
+			<select class="browser-default" ng-model="movie.rating" id="rating" ng-options="rating for rating in {0:1,1:2,2:3,3:4,4:5}" required >
+		    </select>
+	    </div>
+	</div>
+	<div>
+		<label for="description">Omschrijving</label>
+		<input type="text" ng-model="movie.description" class="form-control" id="description" placeholder="Omschrijving" required />
+	</div>
+	<div>
+		<input type="submit" class="btn btn-primary" value="Save" ng-click="submitScreenplay()"/>
+	</div>
+</form>
+
+<p>{{errormessage}}</p>
